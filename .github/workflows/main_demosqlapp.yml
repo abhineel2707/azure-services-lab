@@ -24,8 +24,10 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+        working-directory: ./src/Web App with SQL Connection
 
       - name: dotnet publish
+        working-directory: ./src/Web App with SQL Connection
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
