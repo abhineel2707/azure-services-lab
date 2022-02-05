@@ -19,8 +19,11 @@ namespace WebAppSQLDemo
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration("Endpoint=https://abhineel-app-config.azconfig.io;Id=/rUj-lh-s0:Cjiz/AzFFqL7s0hbPfa0;Secret=xNhnETRgMbHZciXpuciQguoPO5JCJzXofigeLQztfOs=");
+                })
+                .UseStartup<Startup>());
     }
 }

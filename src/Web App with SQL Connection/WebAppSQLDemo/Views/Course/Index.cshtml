@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<WebAppSQLDemo.Models.Course>
 
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,6 +16,7 @@
 </div>
 
 <div>
+    <h3>The name of database is @Configuration["demoapp:Settings:dbname"]</h3>
     <table class="table" table-dark">
         <thead>
             <tr>
