@@ -10,7 +10,7 @@ namespace BlobServiceDemo
 {
     internal class Program
     {
-        private static string connectionString = "DefaultEndpointsProtocol=https;AccountName=abhineelstorage01;AccountKey=GoKgh0amWisjYJE7Yz1tgpgPSfyIfTP/8NHnr8szAkL0MurI99Un5rYBATpfGjv1xUznBlb7YbHisNZmtBEH4Q==;EndpointSuffix=core.windows.net";
+        private static string connectionString = "";
         private static string containerName = "mydata";
         private static string blobName = "Program.cs";
         private static string location = @"D:\Azure Az 204\Azure Services Code Repo\src\Azure Storage\BlobServiceDemo\Program.cs";
@@ -18,9 +18,9 @@ namespace BlobServiceDemo
 
         static void Main(string[] args)
         {
-            // BlobUploadAndDownload();
+            BlobUploadAndDownload();
 
-            // ReadBlob();
+            ReadBlob();
 
             DownloadBlob();
 
@@ -38,10 +38,9 @@ namespace BlobServiceDemo
             if (!isExist)
             {
                 containerClient.Create();
+                //container.CreateIfNotExists();
+                Console.WriteLine("Container Created...");
             }
-
-            //container.CreateIfNotExists();
-            Console.WriteLine("Container Created...");
 
             #endregion
 
@@ -53,10 +52,9 @@ namespace BlobServiceDemo
             if (!isBlobExist)
             {
                 blobClient.Upload(location);
+                Console.WriteLine("Blob has been uploaded successfully.");
 
             }
-            Console.WriteLine("Blob has been uploaded successfully.");
-
             #endregion
 
             #region List All Blobs
@@ -71,13 +69,13 @@ namespace BlobServiceDemo
 
             #region Download Blobs
 
-            //FileStream fs = new FileStream(downloadLocation + $"{blobClient.Name}", FileMode.OpenOrCreate, FileAccess.Write);
-            //using (StreamWriter writer = new StreamWriter(fs))
-            //{
-            //    var res = blobClient.DownloadContent().Value;
-            //    //res.Content.ToArray();
-            //    writer.Write(res.Content);
-            //}
+            FileStream fs = new FileStream(downloadLocation + $"{blobClient.Name}", FileMode.OpenOrCreate, FileAccess.Write);
+            using (StreamWriter writer = new StreamWriter(fs))
+            {
+                var res = blobClient.DownloadContent().Value;
+                //res.Content.ToArray();
+                writer.Write(res.Content);
+            }
             #endregion
 
             #region Blob Properties

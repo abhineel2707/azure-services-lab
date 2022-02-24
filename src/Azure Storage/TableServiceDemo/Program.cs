@@ -6,41 +6,18 @@ namespace TableServiceDemo
 {
     internal class Program
     {
-        private static string connectionString = "DefaultEndpointsProtocol=https;AccountName=abhineelstorage01;AccountKey=GoKgh0amWisjYJE7Yz1tgpgPSfyIfTP/8NHnr8szAkL0MurI99Un5rYBATpfGjv1xUznBlb7YbHisNZmtBEH4Q==;EndpointSuffix=core.windows.net";
+        private static string connectionString = "";
         private static string tableName = "Customer";
 
         static void Main(string[] args)
         {
-            //InsertData();
+            InsertData();
 
-            //QueryData();
+            QueryData();
 
-            // UpdateData();
+            UpdateData();
 
             DeleteData();
-        }
-
-        private static void QueryData()
-        {
-            CloudStorageAccount account = CloudStorageAccount.Parse(connectionString);
-
-            CloudTableClient client = account.CreateCloudTableClient();
-
-            CloudTable table = client.GetTableReference(tableName);
-
-            string partitionKey = "Chicago";
-            string rowKey = "C1";
-
-            TableOperation operation = TableOperation.Retrieve<Customer>(partitionKey, rowKey);
-
-            TableResult result = table.Execute(operation);
-
-            Customer customer = result.Result as Customer;
-
-            Console.WriteLine($"The customer name is {customer.CustomerName}");
-            Console.WriteLine($"The customer city is {customer.PartitionKey}");
-            Console.WriteLine($"The customer id is {customer.RowKey}");
-
         }
 
         private static void InsertData()
@@ -88,6 +65,29 @@ namespace TableServiceDemo
             Console.WriteLine("Batch operation completed successfully.");
 
             Console.ReadLine();
+        }
+
+        private static void QueryData()
+        {
+            CloudStorageAccount account = CloudStorageAccount.Parse(connectionString);
+
+            CloudTableClient client = account.CreateCloudTableClient();
+
+            CloudTable table = client.GetTableReference(tableName);
+
+            string partitionKey = "Chicago";
+            string rowKey = "C1";
+
+            TableOperation operation = TableOperation.Retrieve<Customer>(partitionKey, rowKey);
+
+            TableResult result = table.Execute(operation);
+
+            Customer customer = result.Result as Customer;
+
+            Console.WriteLine($"The customer name is {customer.CustomerName}");
+            Console.WriteLine($"The customer city is {customer.PartitionKey}");
+            Console.WriteLine($"The customer id is {customer.RowKey}");
+
         }
 
         private static void UpdateData()
