@@ -7,7 +7,7 @@ namespace QueueServiceDemo
 {
     internal class Program
     {
-        private static string connectionString = "DefaultEndpointsProtocol=https;AccountName=abhineelstorage01;AccountKey=mouu30yNH4aFALzGv2ajtSYRbBJIoahDwoxE0s8OJ3FGOs3tjb/9Pdv1RAxrGrRli62E2y+PTr65mrK/tiLKQQ==;EndpointSuffix=core.windows.net";
+        private static string connectionString = "";
         private static string queueName = "appqueue";
         static void Main(string[] args)
         {
