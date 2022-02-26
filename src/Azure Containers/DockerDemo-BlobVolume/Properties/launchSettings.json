@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DockerDemo-BlobVolume": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
