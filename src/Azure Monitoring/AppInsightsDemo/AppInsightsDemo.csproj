@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationInsightsResourceId>/subscriptions/c9b43c0f-5162-416f-8e2c-96e520e6efee/resourceGroups/azure-learning-01/providers/microsoft.insights/components/appinsights01</ApplicationInsightsResourceId>
+    <UserSecretsId>e62978af-fb57-4caf-8e2e-5fa522f7866c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+  </ItemGroup>
+
+</Project>
